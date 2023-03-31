@@ -1,0 +1,35 @@
+package upgradeit.rest.api.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import upgradeit.rest.api.DAO.IEmpresa;
+import upgradeit.rest.api.model.EmpresaModel;
+import upgradeit.rest.api.model.UsuarioModel;
+
+import java.util.List;
+
+@RestController
+@RequestMapping ("/empresas")
+public class EmpresaController {
+
+    @Autowired
+    private IEmpresa dao;
+
+    @GetMapping
+    public List<EmpresaModel> listaEmpresas(){
+        return (List<EmpresaModel>) dao.findAll();
+    }
+    @PostMapping
+    public EmpresaModel criarEmpresa (@RequestBody EmpresaModel empresa){
+        EmpresaModel empresaNovo = dao.save(empresa);
+        return empresaNovo;
+    }
+    @PutMapping
+    public EmpresaModel editarEmpresa (@RequestBody EmpresaModel empresa){
+        EmpresaModel empresaNovo = dao.save(empresa);
+        return empresaNovo;
+    }
+    @DeleteMapping
+    public EmpresaModel excluirEmpresa (@PathVariable Integer id)
+
+}
