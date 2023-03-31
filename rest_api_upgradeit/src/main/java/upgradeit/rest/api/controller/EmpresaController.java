@@ -30,7 +30,7 @@ public class EmpresaController {
         EmpresaModel empresaNovo = dao.save(empresa);
         return empresaNovo;
     }
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public Optional<EmpresaModel> excluirEmpresa(@PathVariable Integer id_EMPRESA){
         Optional <EmpresaModel> empresa = dao.findById(id_EMPRESA);
         dao.deleteById(id_EMPRESA);
