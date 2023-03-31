@@ -15,7 +15,7 @@ public class PessoaController {
     @Autowired
     private IPessoa dao;
     @GetMapping
-    public List<PessoaModel> listaPessoas() {return (List<PessoaModel>) dao.findAll()}
+    public List<PessoaModel> listaPessoas() {return (List<PessoaModel>) dao.findAll();}
     @PostMapping
     public PessoaModel criarPessa (@RequestBody PessoaModel pessoa){
         PessoaModel pessoaNovo = dao.save(pessoa);
