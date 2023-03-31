@@ -7,6 +7,7 @@ import upgradeit.rest.api.model.EmpresaModel;
 import upgradeit.rest.api.model.UsuarioModel;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping ("/empresas")
@@ -30,6 +31,10 @@ public class EmpresaController {
         return empresaNovo;
     }
     @DeleteMapping
-    public EmpresaModel excluirEmpresa (@PathVariable Integer id)
+    public Optional<EmpresaModel> excluirEmpresa(@PathVariable Integer id_EMPRESA){
+        Optional <EmpresaModel> empresa = dao.findById(id_EMPRESA);
+        dao.deleteById(id_EMPRESA);
+        return  empresa;
+    }
 
 }
