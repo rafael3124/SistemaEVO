@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 @Table(name = "CONTATOS_EM")
 public class ContatosEmpresasModel {
 
-
+    @Id
     @Column(name = "CONTATO_EM", nullable = false)
     private Integer id_EMPRESA;
     @Column(length = 14, nullable = false)
