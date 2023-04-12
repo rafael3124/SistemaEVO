@@ -9,8 +9,8 @@ import jakarta.persistence.Table;
 @Table (name = "CONTATOS_PE")
 public class ContatosPessoasModel {
 
-    @Id
-    @Column(name = "id_CONTATOS_PE",nullable = false)
+
+    @Column(name = "CONTATO_PE",nullable = false)
     private Integer CPF_PE;
     @Column (length = 14, nullable = false)
     private Integer TEL_PRINCIPAL_PE;

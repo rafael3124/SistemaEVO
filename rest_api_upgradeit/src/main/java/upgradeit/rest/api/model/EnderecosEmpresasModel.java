@@ -11,7 +11,7 @@ public class EnderecosEmpresasModel {
 
 
     @Id
-    @Column(name = "id_ENDERECO_EM", nullable = false)
+    @Column(name = "ENDERECO_EM", nullable = false)
     private Integer id_EMPRESA;
     @Column(length = 8, nullable = false)
     private Integer CEP_EM;

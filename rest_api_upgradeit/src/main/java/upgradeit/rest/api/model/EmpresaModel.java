@@ -11,7 +11,7 @@ public class EmpresaModel {
     @Column
     private Integer id_EMPRESA;
     @Column (length = 14, nullable = false)
-    private Integer CNPJ_EM;
+    private Integer CNPJ;
     @Column (length = 50, nullable = false)
     private String NOME_EM;
     @Column (length = 50, nullable = false)
@@ -28,11 +28,11 @@ public class EmpresaModel {
     }
 
     public Integer getCNPJ_EM() {
-        return CNPJ_EM;
+        return CNPJ;
     }
 
     public void setCNPJ_EM(Integer CNPJ_EM) {
-        this.CNPJ_EM = CNPJ_EM;
+        this.CNPJ = CNPJ_EM;
     }
 
     public String getNOME_EM() {
