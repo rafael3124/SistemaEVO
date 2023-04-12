@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/pessoas")
+@RequestMapping("/PESSOAS")
 public class PessoaController {
     @Autowired
     private IPessoa dao;

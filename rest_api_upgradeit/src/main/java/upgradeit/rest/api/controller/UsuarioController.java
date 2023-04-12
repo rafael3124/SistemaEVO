@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping ("/usuarios")
+@RequestMapping ("/operadores")
 public class UsuarioController {
     @Autowired
     private IUsuario dao;
