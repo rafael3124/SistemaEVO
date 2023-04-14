@@ -1,12 +1,13 @@
 package upgradeit.rest.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import upgradeit.rest.api.DAO.IUsuario;
+import upgradeit.rest.api.Service.UsuarioService;
+import upgradeit.rest.api.repository.IUsuario;
 import upgradeit.rest.api.model.UsuarioModel;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping ("/operadores")
@@ -14,26 +15,28 @@ public class UsuarioController {
     @Autowired
     private IUsuario dao;
 
+    private UsuarioService usuarioService;
+    public UsuarioController(UsuarioService usuarioService){
+        this.usuarioService = usuarioService;
+    }
+
     @GetMapping
-    public List<UsuarioModel> listaUsuarios () {
-        return (List<UsuarioModel>) dao.findAll();
+    public ResponseEntity <List<UsuarioModel>> listaUsuarios () {
+        return ResponseEntity.status(200).body(usuarioService.listarUsuario());
     }
 
     @PostMapping
-    public UsuarioModel criarUsuario (@RequestBody UsuarioModel usuario){
-        UsuarioModel usuarioNovo = dao.save(usuario);
-        return usuarioNovo;
+    public  ResponseEntity <UsuarioModel> criarUsuario (@RequestBody UsuarioModel usuario){
+        return ResponseEntity.status(201).body(usuarioService.criarUsuario(usuario));
     }
     @PutMapping
-    public UsuarioModel editarUsuario (@RequestBody UsuarioModel usuario){
-        UsuarioModel usuarioNovo = dao.save(usuario);
-        return usuarioNovo;
+    public ResponseEntity <UsuarioModel> editarUsuario (@RequestBody UsuarioModel usuario){
+        return ResponseEntity.status(200).body(usuarioService.editarUsuario(usuario));
     }
-    @DeleteMapping ("/{id}")
-    public Optional<UsuarioModel> excluirUsuario(@PathVariable Integer id_OPERADOR){
-        Optional<UsuarioModel> usuario = dao.findById(id_OPERADOR);
-        dao.deleteById(id_OPERADOR);
-        return usuario;
+    @DeleteMapping ("/{Id}")
+    public ResponseEntity<?> excluirUsuario(@PathVariable Integer id){
+        usuarioService.excluirUsuario(id);
+    return ResponseEntity.status(204).build();
     }
 
 }
